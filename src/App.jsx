@@ -1,9 +1,11 @@
 import "./App.css";
 import Task from "./components/Task";
 import { useState } from "react";
+import Input from "./components/input";
 
 function App() {
   const [toDos, setToDos] = useState(["eat", "sleep", "code"]);
+  const [input, setInput] = useState("");
 
   const handleDelete = (clickedTask) => {
     setToDos((currToDos) => {
@@ -13,9 +15,16 @@ function App() {
     });
   };
 
+  const addToDo = (newTask) => {
+    setToDos((currToDos) => {
+      return [...currToDos, newTask];
+    });
+  };
+
   return (
     <>
-      <h1>My to do list</h1>
+      <h1>The 'to do list' of dreams</h1>
+      <Input addToDo={addToDo} />
 
       <ul>
         {toDos.map((task) => {
