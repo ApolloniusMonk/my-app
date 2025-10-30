@@ -4,7 +4,7 @@ import { useState } from "react";
 import Input from "./components/input";
 
 function App() {
-  const [toDos, setToDos] = useState(["eat", "sleep", "code"]);
+  const [toDos, setToDos] = useState([]);
   const [input, setInput] = useState("");
 
   const handleDelete = (clickedTask) => {
@@ -23,7 +23,7 @@ function App() {
 
   return (
     <>
-      <h1>The 'to do list' of dreams</h1>
+      <h1>To do list</h1>
       <Input addToDo={addToDo} />
 
       <ul>
@@ -31,6 +31,7 @@ function App() {
           return <Task key={task} task={task} handleDelete={handleDelete} />;
         })}
       </ul>
+      <button>Delete all</button>
     </>
   );
 }
