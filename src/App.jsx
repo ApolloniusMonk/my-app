@@ -2,6 +2,7 @@ import "./App.css";
 import Task from "./components/Task";
 import { useState } from "react";
 import Input from "./components/input";
+import DeleteAllButton from "./components/DeleteAll";
 
 function App() {
   const [toDos, setToDos] = useState([]);
@@ -13,6 +14,10 @@ function App() {
         return task !== clickedTask;
       });
     });
+  };
+
+  const handleDeleteAll = () => {
+    setToDos([]);
   };
 
   const addToDo = (newTask) => {
@@ -31,7 +36,7 @@ function App() {
           return <Task key={task} task={task} handleDelete={handleDelete} />;
         })}
       </ul>
-      <button>Delete all</button>
+      <DeleteAllButton handleDeleteAll={handleDeleteAll} />
     </>
   );
 }
